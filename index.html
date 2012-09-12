@@ -1,0 +1,29 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>SimpleOpenWeather plugin demo</title>
+	<style type="text/css">
+		.simpleopenweather {
+			background: #ccc;
+			width: 15em;
+			margin: 0.3em;
+			padding: 0.2em;
+		}
+	</style>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.simpleopenweather.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*$("#weather1").simpleopenweather({template: '<span>Temp: {{temperature}} ºC </span>'});
+			$("#weather2").simpleopenweather();*/
+			$(".bulgaria").simpleopenweather();
+		});
+	</script>
+</head>
+<body>
+	<div id="weather1" class="simpleopenweather" data-simpleopenweather-city="alcoy, alicante"></div>
+	<div id="weather2" class="simpleopenweather" data-simpleopenweather-coord="38.701052,-0.464172"></div>
+	<div id="weather3" class="simpleopenweather bulgaria" data-simpleopenweather-city="blagoevgrad"></div>
+	<div id="weather4" class="simpleopenweather bulgaria" data-simpleopenweather-city="sofia"></div>
+</body>
+</html>
