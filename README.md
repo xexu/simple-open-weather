@@ -37,16 +37,16 @@ $(document).ready(function() {
 });
 ```
 
-Your can also write your own template using placeholders:
+Your can also write your own template (error and noweather are also available to override) using placeholders:
 {{temperature}}: temperature in Celsius degrees
 {{place}}: name of the city or station id and coordinates
 {{humidity}}: humidity %
 {{cloudiness}}: cloudiness %
-{{sky}}: "is sunny" or "is cloudy"
+{{sky}}: human readable weather report (for example "few clouds")
 
 ```js
 $(document).ready(function() {
-	$("#weather1").simpleopenweather({template: '<span>Temp: {{temperature}} ºC </span>'});
+	$("#weather1").simpleopenweather({template: '<span>Temp: {{temperature}} ºC </span>', error: '<p>error</p>', noweather: '<p> there isn't any weather station arround</p>'});
 });
 ```
 
