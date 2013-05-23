@@ -1,7 +1,7 @@
 (function( $ ){
 	$.fn.simpleopenweather = function(options){
 		var defaults = {
-			template: 	'<div class="simpleopenweather-place"> {{place}}: {{sky}} </div><div><span class="simpleopenweather-temperature">Temp: {{temperature}} ºC</span><span class="simpleopenweather-humidity"> Humidity: {{humidity}}%</span></div><span class="simpleopenweather-cloudiness">Cloudiness: {{cloudiness}}% </span>',
+			template: 	'<div class="simpleopenweather-place"> {{icon}} {{place}}: {{sky}} </div><div><span class="simpleopenweather-temperature">Temp: {{temperature}} ºC</span><span class="simpleopenweather-humidity"> Humidity: {{humidity}}%</span></div><span class="simpleopenweather-cloudiness">Cloudiness: {{cloudiness}}% </span>',
 			noweather: 	'<p>no weather report was found for that place!</p>',
 			error: 		'<p>something went wrong!</p>',
 			latitude	: 0,
@@ -54,7 +54,7 @@
 											 	.replace(/{{temperature}}/ig, info.temp)
 											 	.replace(/{{humidity}}/ig, info.humidity)
 											 	.replace(/{{cloudiness}}/ig, info.cloudiness)
-												.replace(/{{icon}}/ig, info.icon)
+												.replace(/{{icon}}/ig, '<img src="'+info.icon+'"></img>')
 											 	.replace(/{{sky}}/ig, info.sky));
 				},
 				error : function(){

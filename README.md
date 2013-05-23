@@ -49,6 +49,9 @@ $(document).ready(function() {
 	$("#weather1").simpleopenweather({template: '<span>Temp: {{temperature}} ºC </span>', error: '<p>error</p>', noweather: '<p> there isn't any weather station arround</p>'});
 });
 ```
+TODO
+----
+- Add ability to change iconset
 
 License
 -------
