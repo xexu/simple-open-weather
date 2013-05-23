@@ -39,10 +39,16 @@ $(document).ready(function() {
 
 Your can also write your own template (error and noweather are also available to override) using placeholders:
 {{temperature}}: temperature in Celsius degrees
+
 {{place}}: name of the city or station id and coordinates
+
 {{humidity}}: humidity %
+
 {{cloudiness}}: cloudiness %
+
 {{sky}}: human readable weather report (for example "few clouds")
+
+{{icon}}: icon representing the weather from openweathermap.org
 
 ```js
 $(document).ready(function() {
