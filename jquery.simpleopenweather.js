@@ -1,13 +1,14 @@
 (function( $ ){
 	$.fn.simpleopenweather = function(options){
 		var defaults = {
-			template: 	'<div class="simpleopenweather-place"> {{icon}} {{place}}: {{sky}} </div><div><span class="simpleopenweather-temperature">Temp: {{temperature}} ºC</span><span class="simpleopenweather-humidity"> Humidity: {{humidity}}%</span></div><span class="simpleopenweather-cloudiness">Cloudiness: {{cloudiness}}% </span>',
-			noweather: 	'<p>no weather report was found for that place!</p>',
-			error: 		'<p>something went wrong!</p>',
+			template	: '<div class="simpleopenweather-place"> {{icon}} {{place}}: {{sky}} </div><div><span class="simpleopenweather-temperature">Temp: {{temperature}} ºC</span><span class="simpleopenweather-humidity"> Humidity: {{humidity}}%</span></div><span class="simpleopenweather-cloudiness">Cloudiness: {{cloudiness}}% </span>',
+			noweather	: '<p>no weather report was found for that place!</p>',
+			error		: '<p>something went wrong!</p>',
 			latitude	: 0,
 			longitude	: 0,
-			units		: 'celsius',
-			lang		: 'en'
+			units		: 'imperial',
+			lang		: 'en',
+			iconset		: 'http://openweathermap.org/img/w/'
 		}
 		var settings = $.extend(defaults, options);
 
@@ -27,24 +28,33 @@
 			if(settings.lang != ''){
 				openweathermap_url += "&lang="+settings.lang;
 			}
+
+			if(settings.units == 'metric'){
+				openweathermap_url += "&units="+'metric';
+			} else{
+				openweathermap_url += "&units="+'imperial';
+			}
+
 			console.log(openweathermap_url);
 
 			$.ajax({
-				type: "GET",
-				dataType: "jsonp",
-				url: openweathermap_url,
-				success: function(weather){
+				type : "GET",
+				dataType : "jsonp",
+				url : openweathermap_url,
+				success : function(weather){
 					if(!weather){
 						item.html(settings.noweather);
 						return;
 					}
-					temperature = (settings.units == "celsius") ? (weather.main.temp - 273.15) : (weather.main.temp - 241.15);
-					var info = {temp : temperature.toFixed(1),
-								humidity :weather.main.humidity,
-								cloudiness: "N/A ",
-								sky: weather.weather[0].description,
-								icon: "http://openweathermap.org/img/w/"+weather.weather[0].icon+".png",
-								place : weather.name};
+
+					var info = {
+						temp 		: weather.main.temp.toFixed(1),
+						humidity 	: weather.main.humidity,
+						cloudiness 	: "N/A ",
+						sky 		: weather.weather[0].description,
+						icon 		: settings.iconset+weather.weather[0].icon+".png",	
+						place 		: weather.name
+					};
 
 					if(weather.clouds){
 						info.cloudiness = weather.clouds.all;

@@ -1,7 +1,7 @@
 simple-open-weather
 ===================
 
-It's a jQuery plugin to show weather using OpenWeatherMap json api.
+It's a customizable jQuery plugin to show weather using OpenWeatherMap json api.
 
 
 Usage
@@ -52,12 +52,15 @@ Your can also write your own template (error and noweather are also available to
 
 ```js
 $(document).ready(function() {
-	$("#weather1").simpleopenweather({template: '<span>Temp: {{temperature}} ºC </span>', error: '<p>error</p>', noweather: '<p> there isn't any weather station arround</p>'});
+	$("#weather1").simpleopenweather({template: '<span>Temp: {{temperature}} ºC </span>', error: '<p>error</p>', noweather: '<p> there isn't any weather station arround</p>', units: 'metric', lang: 'en', iconset: './iconset_demo/'});
 });
 ```
+
+For further information check the examples file
+
 TODO
 ----
-- Add ability to change iconset
+- Improve documentation
 
 License
 -------
