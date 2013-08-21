@@ -62,7 +62,7 @@ Your can also write your own template (error and noweather are also available to
 
 ```js
 $(document).ready(function() {
-	$("#weather1").simpleopenweather({template: '<span>Temp: {{temperature}} ºC </span>', error: '<p>error</p>', noweather: '<p> there isn't any weather station arround</p>', units: 'metric', lang: 'en', iconset: './iconset_demo/'});
+	$("#weather1").simpleopenweather({template: '<span>Temp: {{temperature}} ºC </span>', error: '<p>error</p>', noweather: '<p> there is not any weather station arround</p>', units: 'metric', lang: 'en', iconset: './iconset_demo/'});
 });
 ```
 
