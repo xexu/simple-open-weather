@@ -38,7 +38,11 @@ $(document).ready(function() {
 ```
 
 Your can also write your own template (error and noweather are also available to override) using placeholders:
-{{temperature}}: temperature in Celsius degrees
+{{temperature[.current]}}: temperature (units can be selected, imperial by default)
+
+{{temperature.max}}: maximum temperature (units can be selected, imperial by default)
+
+{{temperature.min}}: minimum temperature (units can be selected, imperial by default)
 
 {{place}}: name of the city or station id and coordinates
 
@@ -46,9 +50,15 @@ Your can also write your own template (error and noweather are also available to
 
 {{cloudiness}}: cloudiness %
 
+{{pressure}}: atmospheric pressure in kPa 
+
+{{wind.speed}}: wind speed in m/s
+
+{{wind.direction}}: wind direction in degrees
+
 {{sky}}: human readable weather report (for example "few clouds")
 
-{{icon}}: icon representing the weather from openweathermap.org
+{{icon}}: icon representing the weather from openweathermap.org (iconset is customizable! check the examples index.html file)
 
 ```js
 $(document).ready(function() {
@@ -61,6 +71,7 @@ For further information check the examples file
 TODO
 ----
 - Improve documentation
+- Logic to hook right before the placeholder substitution allowing data manipulation (example: change pressure units)
 
 License
 -------
