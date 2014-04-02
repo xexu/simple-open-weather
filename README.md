@@ -72,6 +72,7 @@ TODO
 ----
 - Improve documentation
 - Logic to hook right before the placeholder substitution allowing data manipulation (example: change pressure units)
+- Add forecasts
 
 License
 -------
