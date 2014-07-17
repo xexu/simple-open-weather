@@ -8,13 +8,15 @@
 			longitude	: 0,
 			units		: 'imperial',
 			lang		: 'en',
-			iconset		: 'http://openweathermap.org/img/w/'
+			iconset		: 'http://openweathermap.org/img/w/',
+			iconfont	: false
 		}
 		var settings = $.extend(defaults, options);
 
 		return this.each(function() {
 			var item = $(this);
 			var openweathermap_url = "http://api.openweathermap.org/data/2.5/weather";
+			var icons = {"01d": "B", "01n": "C", "02d": "H", "02n": "I", "03d": "N", "03n": "N", "04d": "Y", "04n": "Y", "09d": "Q", "09n": "Q", "10d": "R", "10n": "R", "11d": "0", "11n": "0", "13d": "W", "13n": "W", "50d": "J", "50n": "K"};
 
 			if(item.attr("data-simpleopenweather-city")){
 				openweathermap_url += "?q=" + item.attr("data-simpleopenweather-city");
@@ -34,7 +36,6 @@
 			} else{
 				openweathermap_url += "&units="+'imperial';
 			}
-
 			console.log(openweathermap_url);
 
 			$.ajax({
@@ -45,6 +46,12 @@
 					if(!weather){
 						item.html(settings.noweather);
 						return;
+					}
+
+					if(settings.iconfont){
+						var icon_name	= icons[weather.weather[0].icon];
+					}else{
+						var icon_name	= settings.iconset+weather.weather[0].icon+".png";
 					}
 
 					var info = {
@@ -61,7 +68,8 @@
 									},
 						cloudiness 	: weather.clouds ? weather.clouds.all : "N/A",
 						sky 		: weather.weather[0].description,
-						icon 		: settings.iconset+weather.weather[0].icon+".png",	
+						icon 		: icon_name,
+						iconname	: weather.weather[0].icon,
 						place 		: weather.name
 					};
 
@@ -75,7 +83,8 @@
 											 	.replace(/{{wind.speed}}/ig, info.wind.speed)
 											 	.replace(/{{wind.direction}}/ig, info.wind.direction)
 											 	.replace(/{{cloudiness}}/ig, info.cloudiness)
-												.replace(/{{icon}}/ig, '<img src="'+info.icon+'"></img>')
+												.replace(/{{icon}}/ig, ((settings.iconfont) ? '<i class="meteocon">'+info.icon+'</i>' : '<img src="'+info.icon+'"></img>'))
+												.replace(/{{iconname}}/ig, info.iconname)
 											 	.replace(/{{sky}}/ig, info.sky));
 				},
 				error : function(){
