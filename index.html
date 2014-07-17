@@ -5,7 +5,7 @@
 	<style type="text/css">
 		.simpleopenweather {
 			background: #ccc;
-			width: 15em;
+			width: 18em;
 			margin: 0.3em;
 			padding: 0.2em;
 		}
@@ -14,9 +14,9 @@
 	<script type="text/javascript" src="jquery.simpleopenweather.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#weather1").simpleopenweather({template: '<span>Temp: {{temperature}} ºC </span>'});
-			$("#weather2").simpleopenweather();
-			$(".bulgaria").simpleopenweather();
+			$("#weather1").simpleopenweather({template: '<span>Temp: {{temperature}} ºC </span>', units: 'metric'});
+			$("#weather2").simpleopenweather({units: 'metric'});
+			$(".bulgaria").simpleopenweather({iconset: './iconset_demo/', units: 'metric'});
 		});
 	</script>
 </head>
