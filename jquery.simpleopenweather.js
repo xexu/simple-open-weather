@@ -69,7 +69,6 @@
 						cloudiness 	: weather.clouds ? weather.clouds.all : "N/A",
 						sky 		: weather.weather[0].description,
 						icon 		: icon_name,
-						iconname	: weather.weather[0].icon,
 						place 		: weather.name
 					};
 
@@ -84,7 +83,6 @@
 											 	.replace(/{{wind.direction}}/ig, info.wind.direction)
 											 	.replace(/{{cloudiness}}/ig, info.cloudiness)
 												.replace(/{{icon}}/ig, ((settings.iconfont) ? '<i class="meteocon">'+info.icon+'</i>' : '<img src="'+info.icon+'"></img>'))
-												.replace(/{{iconname}}/ig, info.iconname)
 											 	.replace(/{{sky}}/ig, info.sky));
 				},
 				error : function(){
